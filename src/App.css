@@ -1,0 +1,14 @@
+.pokeball {
+  display: inline-block;
+  width: 1em; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 1em; /* Ajusta el tamaño de la imagen según sea necesario */
+  background-image: url('./imagenes/pngwing.com.png'); /* Ruta a la imagen de la Poké Ball */
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -9999px; /* Oculta el texto */
+  vertical-align: middle;
+}
+
+.pointer {
+  cursor: pointer;
+}
