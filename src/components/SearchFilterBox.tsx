@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text } from '@chakra-ui/react';
+import { Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 interface SearchFilterBoxProps {
   searchTerm: string;
@@ -95,13 +96,21 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
       <Heading as="h2" size="md" mb={5}>
         Búsqueda y Filtros
       </Heading>
-      <Input
-        placeholder="Buscar Pokémon..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyPress={handleKeyPress}
-        mb={5}
-      />
+      <InputGroup mb={5}>
+        <Input
+          placeholder="Buscar nombre o ID..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+        <InputRightElement>
+          <IconButton
+            aria-label="Buscar"
+            icon={<SearchIcon />}
+            onClick={onSearch}
+          />
+        </InputRightElement>
+      </InputGroup>
       <Select
         placeholder="Seleccionar tipo"
         value={selectedType}
