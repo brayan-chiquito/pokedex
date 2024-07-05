@@ -128,6 +128,22 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         <option value="steel">Steel</option>
         <option value="fairy">Fairy</option>
       </Select>
+      <Select
+        placeholder="Seleccionar generación"
+        value={selectedGeneration}
+        onChange={(e) => setSelectedGeneration(e.target.value)}
+        mb={5}
+      >
+        {/* Opciones de generaciones */}
+        <option value="1">Generation I</option>
+        <option value="2">Generation II</option>
+        <option value="3">Generation III</option>
+        <option value="4">Generation IV</option>
+        <option value="5">Generation V</option>
+        <option value="6">Generation VI</option>
+        <option value="7">Generation VII</option>
+        <option value="8">Generation VIII</option>
+      </Select>
       <Heading as="h3" size="sm" mb={2}>
         Velocidad
       </Heading>
@@ -147,22 +163,6 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
-      <Select
-        placeholder="Seleccionar generación"
-        value={selectedGeneration}
-        onChange={(e) => setSelectedGeneration(e.target.value)}
-        mb={5}
-      >
-        {/* Opciones de generaciones */}
-        <option value="1">Generation I</option>
-        <option value="2">Generation II</option>
-        <option value="3">Generation III</option>
-        <option value="4">Generation IV</option>
-        <option value="5">Generation V</option>
-        <option value="6">Generation VI</option>
-        <option value="7">Generation VII</option>
-        <option value="8">Generation VIII</option>
-      </Select>
       <Heading as="h3" size="sm" mb={2}>
         Peso (kg)
       </Heading>
