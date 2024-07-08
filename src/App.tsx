@@ -16,7 +16,7 @@ function App() {
         bg="red.500"
         color="white"
         textAlign="center"
-        p={5}
+        p={{ base: 3, md: 5 }}
         position="relative"
         borderRadius="lg"
         bgGradient="radial(blue.500, purple.500)"
@@ -25,15 +25,20 @@ function App() {
       >
         <Heading 
           as="h1" 
-          size="2xl" 
-          mb={5} 
+          size={{ base: 'xl', md: '2xl' }} 
+          mb={{ base: 3, md: 5 }}
           onClick={() => window.location.reload()} 
-          className="pointer" // Aplica la clase aquí
+          className="pointer"
         >
           P<span className="pokeball"></span>kédex
         </Heading>
       </Box>
-      <Container centerContent animation={`${fadeIn} 1s ease-in-out`}>
+      <Container 
+        centerContent 
+        animation={`${fadeIn} 1s ease-in-out`} 
+        maxW={{ base: '100%', md: 'container.lg' }} 
+        p={{ base: 3, md: 5 }}
+      >
         <PokemonList />
       </Container>
     </ChakraProvider>

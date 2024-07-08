@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton } from '@chakra-ui/react';
+import {
+  Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton, Stack
+} from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 interface SearchFilterBoxProps {
@@ -92,7 +94,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
   };
 
   return (
-    <Box bg="white" p={5} borderRadius="md">
+    <Box bg="white" p={5} borderRadius="md" width={{ base: "100%", md: "auto" }}>
       <Heading as="h2" size="md" mb={5}>
         Búsqueda y Filtros
       </Heading>

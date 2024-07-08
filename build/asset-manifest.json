@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.05b156d0.css",
-    "main.js": "/static/js/main.878ac950.js",
+    "main.js": "/static/js/main.87541a80.js",
     "static/media/pngwing.com.png": "/static/media/pngwing.com.6197f11c98e960ed84f6.png",
     "index.html": "/index.html",
     "main.05b156d0.css.map": "/static/css/main.05b156d0.css.map",
-    "main.878ac950.js.map": "/static/js/main.878ac950.js.map"
+    "main.87541a80.js.map": "/static/js/main.87541a80.js.map"
   },
   "entrypoints": [
     "static/css/main.05b156d0.css",
-    "static/js/main.878ac950.js"
+    "static/js/main.87541a80.js"
   ]
 }

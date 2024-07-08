@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Box, Button, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner } from '@chakra-ui/react';
+import {
+  ChakraProvider, Box, Button, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner
+} from '@chakra-ui/react';
 import theme from '../theme'; 
 import SearchFilterBox from './SearchFilterBox'; 
 import Weaknesses from './Weaknesses';
@@ -13,26 +15,26 @@ interface PokemonDetail {
   weight: number;
   height: number;
   base_experience: number;
-  speed: number; // Añadido para el filtro de velocidad
+  speed: number;
 }
 
 const PokemonList: React.FC = () => {
   const [pokemonDetails, setPokemonDetails] = useState<PokemonDetail[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [selectedType, setSelectedType] = useState<string>(''); // Estado para el tipo seleccionado
-  const [selectedGeneration, setSelectedGeneration] = useState<string>(''); // Estado para la generación seleccionada
+  const [selectedType, setSelectedType] = useState<string>('');
+  const [selectedGeneration, setSelectedGeneration] = useState<string>('');
   const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [minWeight, setMinWeight] = useState<number>(0); // Estado para el peso mínimo
-  const [maxWeight, setMaxWeight] = useState<number>(1000); // Estado para el peso máximo
-  const [minHeight, setMinHeight] = useState<number>(0); // Estado para la altura mínima
-  const [maxHeight, setMaxHeight] = useState<number>(20); // Estado para la altura máxima
-  const [minBaseExperience, setMinBaseExperience] = useState<number>(0); // Estado para la experiencia base mínima
-  const [maxBaseExperience, setMaxBaseExperience] = useState<number>(1000); // Estado para la experiencia base máxima
-  const [minSpeed, setMinSpeed] = useState<number>(0); // Estado para la velocidad mínima
-  const [maxSpeed, setMaxSpeed] = useState<number>(200); // Estado para la velocidad máxima
-  const pokemonsPerPage = 20; // 4 pokemones horizontalmente x 5 verticalmente
+  const [minWeight, setMinWeight] = useState<number>(0);
+  const [maxWeight, setMaxWeight] = useState<number>(1000);
+  const [minHeight, setMinHeight] = useState<number>(0);
+  const [maxHeight, setMaxHeight] = useState<number>(20);
+  const [minBaseExperience, setMinBaseExperience] = useState<number>(0);
+  const [maxBaseExperience, setMaxBaseExperience] = useState<number>(1000);
+  const [minSpeed, setMinSpeed] = useState<number>(0);
+  const [maxSpeed, setMaxSpeed] = useState<number>(200);
+  const pokemonsPerPage = 20;
 
   const fetchPokemonDetails = async (url: string): Promise<PokemonDetail> => {
     const response = await fetch(url);
@@ -42,10 +44,10 @@ const PokemonList: React.FC = () => {
       id: data.id,
       types: data.types.map((typeContainer: any) => typeContainer.type.name),
       imageUrl: data.sprites.front_default, 
-      weight: data.weight / 10,  // Convertir a kg
-      height: data.height / 10,  // Convertir a metros
+      weight: data.weight / 10,
+      height: data.height / 10,
       base_experience: data.base_experience,
-      speed: data.stats[5].base_stat // Usando el índice 5 para velocidad
+      speed: data.stats[5].base_stat
     };
   };
 
@@ -144,17 +146,17 @@ const PokemonList: React.FC = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <Container maxW="container.xl" py={10}>
-        <Grid templateColumns="repeat(6, 1fr)" gap={6}>
+      <Container maxW="95vw" py={10} px={{ base: 1, md: 5 }} marginLeft={"auto"} marginRight={"auto"}>
+        <Grid templateColumns={{ base: "1fr", md: "1fr 4fr" }} gap={6}>
           {/* Cuadro de búsqueda y filtros */}
           <GridItem
-            colSpan={1}
-            ml={{ base: -20, md: -380 }}
-            width={{ base: "auto", md: "270px" }}
-            height={{ base: "auto", md: "1060px" }}
+            colSpan={{ base: 1, md: 1 }}
+            width="100%"
+            height="auto"
             position="relative"
-            top={{ base: "0", md: "0px" }}
-            p="10px"
+            alignSelf="start"
+            
+            p={{ base: 1, md: 2 }}
             border="1px solid red"
             borderRadius="10px"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.8)"
@@ -188,13 +190,13 @@ const PokemonList: React.FC = () => {
           </GridItem>
 
           {/* Cuadro de lista de Pokémones */}
-          <GridItem colSpan={5} ml={{ base: -10, md: -180 }} width="100%" maxW="full">
-            <Box bg="red.500" p={5} borderRadius="md" width="960px" borderColor="red.500" borderWidth="2px" boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+          <GridItem colSpan={{ base: 1, md: 1 }} width="100%" maxW="full">
+            <Box bg="red.500" p={{ base: 1, md: 2 }} borderRadius="md" width="100%" borderColor="red.500" borderWidth="2px" boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
               {loading ? (
                 <Spinner size="xl" thickness="4px" speed="0.65s" emptyColor="gray.200" color="red.500" />
               ) : (
                 <>
-                  <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={5}>
+                  <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={5}>
                     {currentPokemons.map(poke => (
                       <Box
                         bg="white" 
@@ -262,7 +264,7 @@ const PokemonList: React.FC = () => {
           </GridItem>
           <Modal isOpen={!!selectedPokemon} onClose={closePokemonDetail}>
             <ModalOverlay />
-            <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="500px" left="-40">
+            <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="500px">
               <ModalHeader>Detalle de {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
