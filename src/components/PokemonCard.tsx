@@ -96,6 +96,10 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
 
   const getColor = (color: string) => lightenColor(color, 80);
 
+  const getSoundUrl = (id: number) => {
+    return `${process.env.PUBLIC_URL}/latest/${id}.ogg`;
+  };
+
   return (
     <Box
       border="1px solid #ccc"
@@ -142,6 +146,12 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
             margin="auto"
           >
             <Image src={details.sprites} alt={details.name} boxSize={{ base: "120px", md: "200px" }} />
+          </Box>
+          <Box mt="10px" width="100%" maxWidth="600px" mx="auto">
+            <audio controls style={{ width: '100%' }}>
+              <source src={getSoundUrl(details.id)} type="audio/ogg" />
+              Your browser does not support the audio element.
+            </audio>
           </Box>
           <Box>
             <Heading as="h3" size={{ base: "sm", md: "md" }}>Stats:</Heading>
