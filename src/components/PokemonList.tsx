@@ -265,7 +265,7 @@ const PokemonList: React.FC = () => {
           <Modal isOpen={!!selectedPokemon} onClose={closePokemonDetail}>
             <ModalOverlay />
             <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="500px">
-              <ModalHeader>Detalle de {selectedPokemon}</ModalHeader>
+              <ModalHeader>Detail of {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
                 {selectedPokemon && <PokemonCard name={selectedPokemon} />}

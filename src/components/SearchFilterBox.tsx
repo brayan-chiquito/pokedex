@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton, Stack
-} from '@chakra-ui/react';
+  Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton} from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 interface SearchFilterBoxProps {
@@ -96,11 +95,11 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
   return (
     <Box bg="white" p={5} borderRadius="md" width={{ base: "100%", md: "auto" }}>
       <Heading as="h2" size="md" mb={5}>
-        Búsqueda y Filtros
+        Search and Filters
       </Heading>
       <InputGroup mb={5}>
         <Input
-          placeholder="Buscar nombre o ID..."
+          placeholder="Search name or ID..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={handleKeyPress}
@@ -114,7 +113,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         </InputRightElement>
       </InputGroup>
       <Select
-        placeholder="Seleccionar tipo"
+        placeholder="Select type"
         value={selectedType}
         onChange={(e) => setSelectedType(e.target.value)}
         mb={5}
@@ -140,7 +139,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         <option value="fairy">Fairy</option>
       </Select>
       <Select
-        placeholder="Seleccionar generación"
+        placeholder="Select generation"
         value={selectedGeneration}
         onChange={(e) => setSelectedGeneration(e.target.value)}
         mb={5}
@@ -156,9 +155,9 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         <option value="8">Generation VIII</option>
       </Select>
       <Heading as="h3" size="sm" mb={2}>
-        Velocidad
+        Speed
       </Heading>
-      <Text fontSize="sm" mb={2}>Velocidad mínima</Text>
+      <Text fontSize="sm" mb={2}>Minimum speed</Text>
       <NumberInput value={minSpeed} onChange={handleMinSpeedChange} min={0} mb={2}>
         <NumberInputField placeholder="Velocidad mínima" />
         <NumberInputStepper>
@@ -166,7 +165,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
-      <Text fontSize="sm" mb={2}>Velocidad máxima</Text>
+      <Text fontSize="sm" mb={2}>Maximum speed</Text>
       <NumberInput value={maxSpeed} onChange={handleMaxSpeedChange} min={0} mb={5}>
         <NumberInputField placeholder="Velocidad máxima" />
         <NumberInputStepper>
@@ -175,9 +174,9 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         </NumberInputStepper>
       </NumberInput>
       <Heading as="h3" size="sm" mb={2}>
-        Peso (kg)
+        Weight (kg)
       </Heading>
-      <Text fontSize="sm" mb={2}>Peso mínimo</Text>
+      <Text fontSize="sm" mb={2}>Minimum weight</Text>
       <NumberInput value={minWeight} onChange={handleMinWeightChange} min={0} mb={2}>
         <NumberInputField placeholder="Peso mínimo" />
         <NumberInputStepper>
@@ -185,7 +184,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
-      <Text fontSize="sm" mb={2}>Peso máximo</Text>
+      <Text fontSize="sm" mb={2}>Maximum weight</Text>
       <NumberInput value={maxWeight} onChange={handleMaxWeightChange} min={0} mb={5}>
         <NumberInputField placeholder="Peso máximo" />
         <NumberInputStepper>
@@ -194,9 +193,9 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         </NumberInputStepper>
       </NumberInput>
       <Heading as="h3" size="sm" mb={2}>
-        Altura (m)
+        Height (m)
       </Heading>
-      <Text fontSize="sm" mb={2}>Altura mínima</Text>
+      <Text fontSize="sm" mb={2}>Minimun height</Text>
       <NumberInput value={minHeight} onChange={handleMinHeightChange} min={0} mb={2}>
         <NumberInputField placeholder="Altura mínima" />
         <NumberInputStepper>
@@ -204,7 +203,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
-      <Text fontSize="sm" mb={2}>Altura máxima</Text>
+      <Text fontSize="sm" mb={2}>Maximum height</Text>
       <NumberInput value={maxHeight} onChange={handleMaxHeightChange} min={0} mb={5}>
         <NumberInputField placeholder="Altura máxima" />
         <NumberInputStepper>
@@ -213,9 +212,9 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         </NumberInputStepper>
       </NumberInput>
       <Heading as="h3" size="sm" mb={2}>
-        Experiencia Base
+        Base Experience
       </Heading>
-      <Text fontSize="sm" mb={2}>Experiencia base mínima</Text>
+      <Text fontSize="sm" mb={2}>Minimum base experience</Text>
       <NumberInput value={minBaseExperience} onChange={handleMinBaseExperienceChange} min={0} mb={2}>
         <NumberInputField placeholder="Experiencia base mínima" />
         <NumberInputStepper>
@@ -223,7 +222,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
-      <Text fontSize="sm" mb={2}>Experiencia base máxima</Text>
+      <Text fontSize="sm" mb={2}>Maximum base experience</Text>
       <NumberInput value={maxBaseExperience} onChange={handleMaxBaseExperienceChange} min={0} mb={5}>
         <NumberInputField placeholder="Experiencia base máxima" />
         <NumberInputStepper>

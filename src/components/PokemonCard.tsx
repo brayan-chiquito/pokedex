@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Image, Text, Heading, List, ListItem, Flex, Grid, Progress, keyframes, Icon, Spinner
-} from '@chakra-ui/react';
+  Box, Image, Text, Heading, List, ListItem, Flex, Grid, Progress, keyframes, Icon} from '@chakra-ui/react';
 import Weaknesses from './Weaknesses';
 import colornames from 'colornames';
 import AnimatedCircle from './EvolutionImage';
@@ -40,9 +39,9 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
       >
         <Icon as={AiOutlineCloseCircle} w={8} h={8} mb={4} color="#e53e3e" /> {/* Icono de error */}
         <Heading as="h3" size="lg" mb={4}>
-          Pokémon no encontrado
+          Pokémon not found
         </Heading>
-        <Text>El Pokémon "{name}" no existe. Por favor, verifica el nombre e intenta de nuevo.</Text>
+        <Text>The Pokémon "{name}" does not exist. Please verify the name and try again.</Text>
       </Box>
     );
   }
