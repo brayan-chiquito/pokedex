@@ -159,7 +159,7 @@ const PokemonList: React.FC = () => {
             p={{ base: 1, md: 2 }}
             border="1px solid red"
             borderRadius="10px"
-            boxShadow="0 0 10px rgba(0, 0, 0, 0.8)"
+            boxShadow="4px 4px 4px rgba(0, 0, 0, 0.14)"
             bg="red.500"
           >
             <SearchFilterBox 
@@ -191,7 +191,7 @@ const PokemonList: React.FC = () => {
 
           {/* Cuadro de lista de Pokémones */}
           <GridItem colSpan={{ base: 1, md: 1 }} width="100%" maxW="full">
-            <Box bg="red.500" p={{ base: 1, md: 2 }} borderRadius="md" width="100%" borderColor="red.500" borderWidth="2px" boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <Box bg="red.500" p={{ base: 1, md: 2 }} borderRadius="md" width="100%" borderColor="red.500" borderWidth="2px" boxShadow="8px 8px 8px rgba(0, 0, 0, .14)">
               {loading ? (
                 <Spinner size="xl" thickness="4px" speed="0.65s" emptyColor="gray.200" color="red.500" />
               ) : (

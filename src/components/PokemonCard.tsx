@@ -107,7 +107,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
       width={{ base: "80vw", md: "70vw", lg: "60vw" }}
       maxWidth={{ base: "95vw", md: "80vw", lg: "70vw" }}
       backgroundImage="linear-gradient(to bottom, #DC2626, #ffffff)"
-      boxShadow="0 0 10px rgba(0, 0, 0, 0.8)"
+      boxShadow="6px 6px 6px rgba(0, 0, 0, .14)"
       margin="auto"
       overflow="hidden"
     >
@@ -128,7 +128,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
             backgroundColor={getColor(details.color)}
             width="80%"
             margin="10px auto"
-            boxShadow="0 0 10px rgba(0, 0, 0, 48%)"
+            boxShadow="10px 10px 10px rgba(0, 0, 0, .14)"
           >
             <Heading as="h2" size={{ base: "md", md: "lg" }}>{details.name}</Heading>
           </Box>
@@ -183,19 +183,19 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
           width="100%"
         >
           <List>
-            <ListItem bg={getColor(details.color)} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getColor(details.color)} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Text fontSize="xl"><strong>ID:</strong> {details.id}</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Text fontSize="xl"><strong>Base Experience:</strong> {details.base_experience}</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Text fontSize="xl"><strong>Height:</strong> {(details.height / 10)} m</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Text fontSize="xl"><strong>Weight:</strong> {((details.weight / 9.8)).toFixed(1)} kg</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Heading as="h3" size={{ base: "sm", md: "md" }}>Abilities:</Heading>
               <List>
                 {details.abilities.map((ability, index) => (
@@ -205,25 +205,25 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
                 ))}
               </List>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Weaknesses data={details.types} type="types" />
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Weaknesses data={details.weaknesses} type="weaknesses" />
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Heading as="h3" size={{ base: "sm", md: "md" }}>Data:</Heading>
               <Text>{details.history}</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Heading as="h3" size={{ base: "sm", md: "md" }}>First Appearance:</Heading>
               <Text>{details.first_appearance}</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Heading as="h3" size={{ base: "sm", md: "md" }}>Category:</Heading>
               <Text>{details.category}</Text>
             </ListItem>
-            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="0 0 10px rgba(0, 0, 0, 0.8)">
+            <ListItem bg={getRandomColor()} p={{ base: "5px", md: "10px" }} borderRadius="10px" mb="10px" animation={`${fadeIn} 2s ease-in-out`} boxShadow="3px 3px 3px rgba(0, 0, 0, .14)">
               <Heading as="h3" size={{ base: "sm", md: "md" }}>Color:</Heading>
               <Text >{details.color}</Text>
             </ListItem>
@@ -252,7 +252,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
                   backgroundColor={getColor(details.color)}
                   width="100%"
                   margin="10px auto"
-                  boxShadow="0 0 10px rgba(0, 0, 0, 0.8)"
+                  boxShadow="6px 6px 6px rgba(0, 0, 0, .14)"
                 >
                   <Heading as="h2" size={{ base: "sm", md: "md" }}>{evolution.name}</Heading>
                 </Box>
