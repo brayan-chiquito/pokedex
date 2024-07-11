@@ -264,7 +264,7 @@ const PokemonList: React.FC = () => {
           </GridItem>
           <Modal isOpen={!!selectedPokemon} onClose={closePokemonDetail}>
             <ModalOverlay />
-            <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="500px">
+            <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="850px">
               <ModalHeader>Detail of {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
               <ModalBody>

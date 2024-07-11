@@ -37,7 +37,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
         color="#e53e3e"
         textAlign="center"
       >
-        <Icon as={AiOutlineCloseCircle} w={8} h={8} mb={4} color="#e53e3e" /> {/* Icono de error */}
+        <Icon as={AiOutlineCloseCircle} w={8} h={8} mb={4} color="#e53e3e" />
         <Heading as="h3" size="lg" mb={4}>
           Pokémon not found
         </Heading>
@@ -128,7 +128,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
             backgroundColor={getColor(details.color)}
             width="80%"
             margin="10px auto"
-            boxShadow="0 0 10px rgba(0, 0, 0, 0.8)"
+            boxShadow="0 0 10px rgba(0, 0, 0, 48%)"
           >
             <Heading as="h2" size={{ base: "md", md: "lg" }}>{details.name}</Heading>
           </Box>
