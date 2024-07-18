@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  ChakraProvider, Box, Button, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner
+  ChakraProvider, Box, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner,
+  IconButton,
+  Center
 } from '@chakra-ui/react';
 import theme from '../theme'; 
 import SearchFilterBox from './SearchFilterBox'; 
 import Weaknesses from './Weaknesses';
 import PokemonCard from './PokemonCard';
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 
 interface PokemonDetail {
   name: string;
@@ -122,8 +125,23 @@ const PokemonList: React.FC = () => {
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
   const currentPokemons = filteredPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
-  const handleSearch = () => {
+  const handleSearch = (clearSearchTerm?: () => void) => {
     setSelectedPokemon(searchTerm);
+    if (clearSearchTerm) clearSearchTerm();
+  };
+
+  const handleReset = () => {
+    setSearchTerm('');
+    setSelectedType('');
+    setSelectedGeneration('');
+    setMinWeight(0);
+    setMaxWeight(1000);
+    setMinHeight(0);
+    setMaxHeight(20);
+    setMinBaseExperience(0);
+    setMaxBaseExperience(1000);
+    setMinSpeed(0);
+    setMaxSpeed(200);
   };
 
   const openPokemonDetail = (pokemonName: string) => {
@@ -148,14 +166,12 @@ const PokemonList: React.FC = () => {
     <ChakraProvider theme={theme}>
       <Container maxW="95vw" py={10} px={{ base: 1, md: 5 }} marginLeft={"auto"} marginRight={"auto"}>
         <Grid templateColumns={{ base: "1fr", md: "1fr 4fr" }} gap={6}>
-          {/* Cuadro de búsqueda y filtros */}
           <GridItem
             colSpan={{ base: 1, md: 1 }}
             width="100%"
             height="auto"
             position="relative"
             alignSelf="start"
-            
             p={{ base: 1, md: 2 }}
             border="1px solid red"
             borderRadius="10px"
@@ -186,10 +202,9 @@ const PokemonList: React.FC = () => {
               setMinSpeed={setMinSpeed}
               maxSpeed={maxSpeed}
               setMaxSpeed={setMaxSpeed}
+              onReset={handleReset} 
             />
           </GridItem>
-
-          {/* Cuadro de lista de Pokémones */}
           <GridItem colSpan={{ base: 1, md: 1 }} width="100%" maxW="full">
             <Box bg="red.500" p={{ base: 1, md: 2 }} borderRadius="md" width="100%" borderColor="red.500" borderWidth="2px" boxShadow="8px 8px 8px rgba(0, 0, 0, .14)">
               {loading ? (
@@ -231,33 +246,38 @@ const PokemonList: React.FC = () => {
                     ))}
                   </SimpleGrid>
                   <Stack direction="row" spacing={4} align="center" justify="center" mt={5}>
-                    <Button 
-                      onClick={prevPage} 
-                      isDisabled={currentPage === 0}
-                      sx={{
-                        '&:disabled': {
-                          cursor: 'not-allowed',
-                          bg: 'gray.300',
-                          color: 'gray.500',
-                        },
-                      }}
-                    >
-                      Anterior
-                    </Button>
-                    <Button 
-                      onClick={nextPage} 
-                      isDisabled={indexOfLastPokemon >= filteredPokemons.length}
-                      sx={{
-                        '&:disabled': {
-                          cursor: 'not-allowed',
-                          bg: 'gray.300',
-                          color: 'gray.500',
-                        },
-                      }}
-                    > 
-                      Siguiente
-                    </Button>
+                    <IconButton 
+                        onClick={prevPage}
+                        isDisabled={currentPage === 0}
+                        icon={<ArrowBackIcon />} 
+                        sx={{
+                          '&:disabled': {
+                            cursor: 'not-allowed',
+                            bg: 'gray.300',
+                            color: 'gray.500',
+                          },
+                        }} aria-label={''}
+                        width="70px"                     
+                        />
+                    <IconButton 
+                        onClick={nextPage}
+                        isDisabled={indexOfLastPokemon >= filteredPokemons.length}
+                        icon={<ArrowForwardIcon />} 
+                        sx={{
+                          '&:disabled': {
+                            cursor: 'not-allowed',
+                            bg: 'gray.300',
+                            color: 'gray.500',
+                          },
+                        }} aria-label={''}
+                        width="70px"                    
+                        />
                   </Stack>
+                  <Center mt={4}>
+                    <Box textAlign="center" fontSize="lg" border="1px solid" borderRadius="md" p={1} bg="white" display="inline-block">
+                      {currentPage + 1} - {Math.ceil(filteredPokemons.length / pokemonsPerPage)}
+                    </Box>
+                  </Center>
                 </>
               )}
             </Box>
@@ -267,7 +287,7 @@ const PokemonList: React.FC = () => {
             <ModalContent marginLeft="auto" marginRight="auto" maxWidth="90%" width="850px">
               <ModalHeader>Detail of {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
-              <ModalBody>
+              <ModalBody maxH="80vh" overflowY="auto">
                 {selectedPokemon && <PokemonCard name={selectedPokemon} />}
               </ModalBody>
             </ModalContent>

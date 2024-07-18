@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton} from '@chakra-ui/react';
+  Box, Heading, Input, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Text, InputGroup, InputRightElement, IconButton, Button
+} from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 interface SearchFilterBoxProps {
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-  onSearch: () => void;
+  onSearch: (clearSearchTerm?: () => void) => void;
   selectedType: string;
   setSelectedType: React.Dispatch<React.SetStateAction<string>>;
   selectedGeneration: string;
@@ -27,6 +28,7 @@ interface SearchFilterBoxProps {
   setMinSpeed: React.Dispatch<React.SetStateAction<number>>;
   maxSpeed: number;
   setMaxSpeed: React.Dispatch<React.SetStateAction<number>>;
+  onReset: () => void; // Añadir esta línea
 }
 
 const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
@@ -53,10 +55,11 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
   setMinSpeed,
   maxSpeed,
   setMaxSpeed,
+  onReset, // Añadir esta línea
 }) => {
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      onSearch();
+      onSearch(() => setSearchTerm(''));
     }
   };
 
@@ -108,7 +111,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <IconButton
             aria-label="Buscar"
             icon={<SearchIcon />}
-            onClick={onSearch}
+            onClick={() => onSearch(() => setSearchTerm(''))}
           />
         </InputRightElement>
       </InputGroup>
@@ -118,7 +121,6 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         onChange={(e) => setSelectedType(e.target.value)}
         mb={5}
       >
-        {/* Opciones de tipos */}
         <option value="normal">Normal</option>
         <option value="fire">Fire</option>
         <option value="water">Water</option>
@@ -144,7 +146,6 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
         onChange={(e) => setSelectedGeneration(e.target.value)}
         mb={5}
       >
-        {/* Opciones de generaciones */}
         <option value="1">Generation I</option>
         <option value="2">Generation II</option>
         <option value="3">Generation III</option>
@@ -230,6 +231,9 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
           <NumberDecrementStepper />
         </NumberInputStepper>
       </NumberInput>
+      <Button mt={4} colorScheme="teal" onClick={onReset}>
+        Reset Filters
+      </Button>
     </Box>
   );
 };
