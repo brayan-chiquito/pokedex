@@ -12,3 +12,7 @@
 .pointer {
   cursor: pointer;
 }
+
+img {
+  background-color: transparent; /* Asegúrate de que la imagen tenga un fondo transparente */
+}

@@ -1,8 +1,10 @@
 import React from 'react';
-import { ChakraProvider, Box, Heading, Container, keyframes } from '@chakra-ui/react';
-import './App.css'; // Importa tu archivo CSS
+import { ChakraProvider, Box, Heading, Container, keyframes, Image, Flex } from '@chakra-ui/react';
+import './App.css'; 
 import theme from './theme';
 import PokemonList from './components/PokemonList';
+import imagenLeft from './imagenes/pikachu-png-transparent.png';
+import imagenRigth from './imagenes/lugia.png';
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -23,15 +25,32 @@ function App() {
         boxShadow="xl"
         animation={`${fadeIn} 1s ease-in-out`}
       >
-        <Heading 
-          as="h1" 
-          size={{ base: 'xl', md: '2xl' }} 
-          mb={{ base: 3, md: 5 }}
-          onClick={() => window.location.reload()} 
-          className="pointer"
-        >
-          P<span className="pokeball"></span>kédex
-        </Heading>
+        <Flex align="center" justify="space-between" px={{ base: 3, md: 5 }}>
+          <Image 
+            src={imagenLeft} 
+            alt="Left Image"
+            boxSize={{ base: '50px', md: '80px' }} 
+            objectFit="contain"
+          />
+          <Heading 
+            as="h1" 
+            size={{ base: 'xl', md: '2xl' }} 
+            mb={{ base: 3, md: 5 }}
+            onClick={() => window.location.reload()} 
+            className="pointer"
+            flex="1"
+            textAlign="center"
+          >
+            P<span className="pokeball"></span>kédex
+          </Heading>
+          <Image 
+            src={imagenRigth} 
+            alt="Right Image"
+            boxSize={{ base: '50px', md: '80px' }} 
+            objectFit="contain"
+            bg="transparent" 
+          />
+        </Flex>
       </Box>
       <Container 
         centerContent 

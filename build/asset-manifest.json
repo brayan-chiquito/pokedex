@@ -1,14 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.05b156d0.css",
-    "main.js": "/static/js/main.dea79f5b.js",
+    "main.css": "/static/css/main.cd505897.css",
+    "main.js": "/static/js/main.44acef2c.js",
+    "static/media/lugia.png": "/static/media/lugia.006d4ae08ac026643e25.png",
+    "static/media/pikachu-png-transparent.png": "/static/media/pikachu-png-transparent.7874df23cf86d3c88532.png",
     "static/media/pngwing.com.png": "/static/media/pngwing.com.6197f11c98e960ed84f6.png",
     "index.html": "/index.html",
-    "main.05b156d0.css.map": "/static/css/main.05b156d0.css.map",
-    "main.dea79f5b.js.map": "/static/js/main.dea79f5b.js.map"
+    "main.cd505897.css.map": "/static/css/main.cd505897.css.map",
+    "main.44acef2c.js.map": "/static/js/main.44acef2c.js.map"
   },
   "entrypoints": [
-    "static/css/main.05b156d0.css",
-    "static/js/main.dea79f5b.js"
+    "static/css/main.cd505897.css",
+    "static/js/main.44acef2c.js"
   ]
 }
