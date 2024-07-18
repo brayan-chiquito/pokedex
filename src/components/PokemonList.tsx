@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   ChakraProvider, Box, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner,
-  IconButton,
-  Center
+  IconButton, Center,
+  Skeleton
 } from '@chakra-ui/react';
 import theme from '../theme'; 
 import SearchFilterBox from './SearchFilterBox'; 
@@ -29,6 +29,7 @@ const PokemonList: React.FC = () => {
   const [selectedGeneration, setSelectedGeneration] = useState<string>('');
   const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [cardLoading, setCardLoading] = useState(false); // Estado de carga para PokemonCard
   const [minWeight, setMinWeight] = useState<number>(0);
   const [maxWeight, setMaxWeight] = useState<number>(1000);
   const [minHeight, setMinHeight] = useState<number>(0);
@@ -146,6 +147,7 @@ const PokemonList: React.FC = () => {
 
   const openPokemonDetail = (pokemonName: string) => {
     setSelectedPokemon(pokemonName);
+    setCardLoading(true); // Activar el estado de carga cuando se abre el modal
   };
 
   const closePokemonDetail = () => {
@@ -273,11 +275,6 @@ const PokemonList: React.FC = () => {
                         width="70px"                    
                         />
                   </Stack>
-                  <Center mt={4}>
-                    <Box textAlign="center" fontSize="lg" border="1px solid" borderRadius="md" p={1} bg="white" display="inline-block">
-                      {currentPage + 1} - {Math.ceil(filteredPokemons.length / pokemonsPerPage)}
-                    </Box>
-                  </Center>
                 </>
               )}
             </Box>
@@ -288,7 +285,21 @@ const PokemonList: React.FC = () => {
               <ModalHeader>Detail of {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
               <ModalBody maxH="80vh" overflowY="auto">
-                {selectedPokemon && <PokemonCard name={selectedPokemon} />}
+                {cardLoading && <Stack>
+                  <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                  />
+                </Stack>}
+                {selectedPokemon && (
+                  <PokemonCard
+                    name={selectedPokemon}
+                    onLoaded={() => setCardLoading(false)} 
+                  />
+                )}
               </ModalBody>
             </ModalContent>
           </Modal>

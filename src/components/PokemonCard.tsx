@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Image, Text, Heading, List, ListItem, Flex, Grid, Progress, keyframes, Icon} from '@chakra-ui/react';
+  Box, Image, Text, Heading, List, ListItem, Flex, Grid, Progress, keyframes, Icon
+} from '@chakra-ui/react';
 import Weaknesses from './Weaknesses';
 import colornames from 'colornames';
 import AnimatedCircle from './EvolutionImage';
@@ -8,7 +9,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { PokemonDetails, PokemonProps, fetchPokemonDetails } from './fetchPokemonDetails';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 
-const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
+const PokemonCard: React.FC<PokemonProps & { onLoaded: () => void }> = ({ name, onLoaded }) => {
   const [details, setDetails] = useState<PokemonDetails | null>(null);
   const [error, setError] = useState<boolean>(false);
 
@@ -17,6 +18,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
       .then((data) => {
         setDetails(data);
         setError(false);
+        onLoaded();
       })
       .catch((error) => {
         if (error.message === 'Pokemon not found') {
@@ -24,8 +26,9 @@ const PokemonCard: React.FC<PokemonProps> = ({ name }) => {
         } else {
           console.error('Error fetching Pokémon details:', error);
         }
+        onLoaded();
       });
-  }, [name]);
+  }, [name, onLoaded]);
 
   if (error) {
     return (
