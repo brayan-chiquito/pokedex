@@ -28,7 +28,7 @@ const PokemonList: React.FC = () => {
   const [selectedGeneration, setSelectedGeneration] = useState<string>('');
   const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [cardLoading, setCardLoading] = useState(false); // Estado de carga para PokemonCard
+  const [cardLoading, setCardLoading] = useState(false); 
   const [minWeight, setMinWeight] = useState<number>(0);
   const [maxWeight, setMaxWeight] = useState<number>(1000);
   const [minHeight, setMinHeight] = useState<number>(0);
@@ -126,6 +126,7 @@ const PokemonList: React.FC = () => {
   const currentPokemons = filteredPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
   const handleSearch = (clearSearchTerm?: () => void) => {
+    setCardLoading(true);
     setSelectedPokemon(searchTerm);
     if (clearSearchTerm) clearSearchTerm();
   };
@@ -146,7 +147,7 @@ const PokemonList: React.FC = () => {
 
   const openPokemonDetail = (pokemonName: string) => {
     setSelectedPokemon(pokemonName);
-    setCardLoading(true); // Activar el estado de carga cuando se abre el modal
+    setCardLoading(true); 
   };
 
   const closePokemonDetail = () => {
@@ -289,7 +290,7 @@ const PokemonList: React.FC = () => {
               <ModalHeader>Detail of {selectedPokemon}</ModalHeader>
               <ModalCloseButton />
               <ModalBody maxH="80vh" overflowY="auto">
-                {cardLoading && <Stack>
+                {cardLoading && <Stack align="center" justify="center" height="70px">
                   <Spinner
                     thickness='4px'
                     speed='0.65s'

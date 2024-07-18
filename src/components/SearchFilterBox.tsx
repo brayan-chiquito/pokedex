@@ -55,7 +55,7 @@ const SearchFilterBox: React.FC<SearchFilterBoxProps> = ({
   setMinSpeed,
   maxSpeed,
   setMaxSpeed,
-  onReset, // Añadir esta línea
+  onReset, 
 }) => {
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
