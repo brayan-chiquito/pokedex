@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   ChakraProvider, Box, SimpleGrid, Image, Text, Container, Stack, Grid, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner,
-  IconButton, Center,
-  Skeleton
+  IconButton, Center
 } from '@chakra-ui/react';
 import theme from '../theme'; 
 import SearchFilterBox from './SearchFilterBox'; 
@@ -275,6 +274,11 @@ const PokemonList: React.FC = () => {
                         width="70px"                    
                         />
                   </Stack>
+                  <Center mt={4}>
+                    <Box textAlign="center" fontSize="lg" border="1px solid" borderRadius="md" p={2} bg="white" display="inline-block">
+                      {currentPage + 1} - {Math.ceil(filteredPokemons.length / pokemonsPerPage)}
+                    </Box>
+                  </Center>
                 </>
               )}
             </Box>
